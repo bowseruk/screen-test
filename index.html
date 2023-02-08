@@ -14,25 +14,62 @@
 
 
     <!-- CSS -->
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
 
     <title>Screen Test</title>
 
 </head>
 
 <body>
-    <!-- nav bar -->
-    <header></header>
+
+    <!-- header - main title/navbar -->
+    <header class="container text-center p-4">
+        <h1 class="quiz-title">Screen Test</h1>
+    </header>
 
     <!-- grid container -->
-    <div>some text</div>
+    <div class="container-fluid text-center">
+
+        <div class="row">
+
+            <!-- top left block -->
+            <div class="col-lg-6" id="submit-answer-block">
+
+                <!-- submit answer field & button -->
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="enter your answer!" aria-label="users answer"
+                        aria-describedby="basic-addon2">
+                    <span class="input-group-text" id="basic-addon2">submit</span>
+                </div>
+            </div>
+
+            <!-- top right block -->
+            <div class="col-lg-6" id="hint-block-one">hint 1</div>
+
+        </div>
+
+        <div class="row">
+
+            <!-- bottom left block -->
+            <div class="col-lg-6" id="hint-block-two">hint 2</div>
+
+            <!-- bottom right block -->
+            <div class="col-lg-6" id="hint-block-three">hint 3</div>
+
+        </div>
+
+    </div>
+
+    <!-- footer -->
+    <footer></footer>
+
 
     <!-- scripts -->
     <!-- jQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <!-- JS -->
-    <script type="text/javascript" src="./script.js"></script>
+    <script type="text/javascript" src="./assets/js/script.js"></script>
 
 </body>
 
