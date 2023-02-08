@@ -1,0 +1,38 @@
+// PSEUDOCODE //
+
+> start screen: 
+---------------
+button/link to start game
+button/link for highscore board
+images/gifs in two other blocks of random movies
+clickable question mark button for instructions (in modal)
+
+> quiz screen: 
+--------------
+four blocks: 
+    > name the movie question & answer input
+    > three possible hints (reveal on time passed - deduct points as more hints appear): 
+        > actors?
+        > movie plot?
+        > gif
+timer is purely for showing hints
+clock in middle (phase 2)
+
+> points: 
+---------
+points per question?
+hint 1 - lose 0 pts
+hint 2 - lose 10 pts
+hint 3 - lose 20 pts
+don't know answer - pass button (first 3 passes deduct 0pts, after that a pass deducts 10pts)
+
+> scoreboard: 
+-------------
+list of winners, their score and time(?)
+
+> game over screen: 
+-------------------
+four blocks: 
+    > 'Game over' (& retry button)
+    > two blocks of funny game over gifs
+    > highscores (top 5 with link to full list)
