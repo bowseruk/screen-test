@@ -1,13 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <link rel="stylesheet" href="./style.css">
-    <title>Document</title>
+
+    <!-- Bootstrap 5.3 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+    <!-- fontawesome -->
+
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+
+    <title>Screen Test</title>
+
 </head>
+
 <body>
+
+    <!-- header - main title/navbar -->
+    <header class="container text-center p-4">
+        <h1 class="quiz-title">Screen Test</h1>
+    </header>
+
+    <!-- grid container -->
+    <div class="container-fluid text-center">
+
+        <div class="row">
+
+            <!-- top left block -->
+            <div class="col-lg-6" id="submit-answer-block">
+
+                <!-- submit answer field & button -->
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="enter your answer!" aria-label="users answer"
+                        aria-describedby="basic-addon2">
+                    <span class="input-group-text" id="basic-addon2">submit</span>
+                </div>
+            </div>
+
+            <!-- top right block -->
+            <div class="col-lg-6" id="hint-block-one">hint 1</div>
+
+        </div>
+
+        <div class="row">
+
+            <!-- bottom left block -->
+            <div class="col-lg-6" id="hint-block-two">hint 2</div>
+
+            <!-- bottom right block -->
+            <div class="col-lg-6" id="hint-block-three">hint 3</div>
+
+        </div>
+
+    </div>
+
+    <!-- footer -->
+    <footer></footer>
+
+
+    <!-- scripts -->
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- JS -->
+    <script type="text/javascript" src="./assets/js/script.js"></script>
+
 </body>
+
 </html>
