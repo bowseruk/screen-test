@@ -44,3 +44,28 @@ SO THAT I can brag to the rest of the class
 * input field for user to enter answer
 * modal prompt answer / lifeline prompt
 * scoreboard?
+
+## Credits
+
+* Director - Adam Bolsover
+
+* Greensman - Claire Ingram
+
+* Cinematographer - Christos Laios
+
+* Creative Director - Abu Naser
+
+* Visual effects creative director - Anil Jassi
+
+This site was based on a project by edX Boot Camps LLC.
+
+[W3School](https://www.w3schools.com/) was used as a reference for elements to use and good practice.
+
+The changes were checked with [W3C Validator](https://validator.w3.org/).
+
+[Stack Overflow](https://stackoverflow.com/) always seems to have the answer to a problem that occurs.
+
+
+## License
+
+This project uses the licence in the LICENCE file of the repo.
