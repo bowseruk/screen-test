@@ -28,12 +28,18 @@
     </header>
 
     <!-- grid container -->
-    <div class="container-fluid text-center">
+    <main class="container-fluid text-center">
 
-        <div class="row">
+        <div class="game-screen row">
+
+            <div class="timer col-lg-12 order-4 order-lg-3">
+                <p id="total-score">10 points</p>
+                <p id="points-left">10 points</p>
+                <p id="timer">10 Seconds</p>
+            </div>
 
             <!-- top left block -->
-            <div class="col-lg-6 order-1 order-lg-1" id="panel-1">
+            <div class="col-lg-6 order-5 order-lg-1 panel" id="panel-1">
 
                 <!-- submit answer field & button -->
                 <div class="input-group mb-3">
@@ -44,33 +50,30 @@
             </div>
 
             <!-- top right block -->
-            <div class="col-lg-6 order-2 order-lg-2" id="panel-2">hint 1</div>
-
-        </div>
-
-        <div class="row">
+            <div class="col-lg-6 order-1 order-lg-2 d-none d-lg-block panel" id="panel-2">hint 1</div>
 
             <!-- bottom left block -->
-            <div class="col-lg-6 order-3 order-lg-4" id="panel-3">hint 2</div>
+            <div class="col-lg-6 order-2 order-lg-5 d-none d-lg-block panel" id="panel-3">hint 2</div>
 
             <!-- bottom right block -->
-            <div class="col-lg-6 order-4 order-lg-3" id="panel-4">hint 3</div>
-
+            <div class="col-lg-6 order-3 order-lg-4 d-none d-lg-block panel" id="panel-4">hint 3</div>
         </div>
-
-    </div>
+    </main>
 
     <!-- footer -->
-    <footer></footer>
+    <footer class="container text-center">
+        <h2>By No 1 Team</h2>
+    </footer>
 
 
     <!-- scripts -->
     <!-- jQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- JS Game Items -->
+    <script src="./assets/js/questions.js"></script>
     <script src="./assets/js/model.js"></script>
-    <script src="assets/js/view.js"></script>
-    <script src="assets/js/controller.js"></script>
+    <script src="./assets/js/view.js"></script>
+    <script src="./assets/js/controller.js"></script>
     <!-- JS -->
     <script type="text/javascript" src="./assets/js/script.js"></script>
 
