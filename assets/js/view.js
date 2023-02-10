@@ -76,6 +76,21 @@ class Page {
     }
 
     renderGameOver() {
+        //clear screen
+        this.clearScreen()
+
+        let gameOverDiv = $('<div>').text('Game Over').removeClass('d-none')
+        this._panel1.append(gameOverDiv)
+
+        let picture1Div = $('<div>').text('picture goes here').removeClass('d-none')
+        this._panel2.append(picture1Div)
+
+        let highScoreDiv = $('<div>').text('high score goes here').removeClass('d-none')
+        this._panel3.append(highScoreDiv)
+
+        let picture2Div = $('<div>').text('picture goes here').removeClass('d-none')
+        this._panel4.append(picture2Div)
+
 
     }
     
