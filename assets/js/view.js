@@ -1,30 +1,37 @@
 // This file houses the View. This controls what the user can see
 class Page {
-    constructor(panel1, panel2, panel3, panel4) {
+    constructor(panel1, panel2, panel3, panel4, timer, favicon) {
         this._panel1 = panel1;
         this._panel2 = panel2;
         this._panel3 = panel3;
         this._panel4 = panel4;
+        this._timer = timer
+        this._favicon = favicon
     }
     // Displays a timer with the seconds inputted
     renderTimer(seconds) {
-        
+        timer.children[2].innerText = seconds;
     }
+        // Displays a timer with the seconds inputted
+        renderScore(score) {
+            timer.children[0].innerText = score;
+        }
     // Clear the four game panels
     clearScreen() {
         // clear panel 1
-        this._panel1.empty()
+        this._panel1.empty().removeClass().addClass("col-lg-6 order-5 order-lg-1 panel")
         // clear panel 2
-        this._panel2.empty()
+        this._panel2.empty().removeClass().addClass("col-lg-6 order-1 order-lg-2 d-none d-lg-block panel")
         // clear panel 3
-        this._panel3.empty()
+        this._panel3.empty().removeClass().addClass("col-lg-6 order-2 order-lg-5 d-none d-lg-block panel")
         // clear panel 4
-        this._panel4.empty()
+        this._panel4.empty().removeClass().addClass("col-lg-6 order-3 order-lg-4 d-none d-lg-block panel")
     }
     // Display the start screen
     renderStartScreen() {
         // clear screen
         this.clearScreen()
+        this._favicon.attr({'href': './assets/images/logo-open.ico', 'type': "image/x-icon"})
 
         // make all items central in panels
 
@@ -48,10 +55,14 @@ class Page {
 
         // Change contents
 
+        // return buttons that need altering
+        return { 'button': button }
     }
     renderQuestion() {
         // clear screen
         this.clearScreen()
+        this._timer.removeClass('d-none')
+        this._favicon.attr({'href': './assets/images/logo-animate.ico', 'type': "image/gif" })
 
         // show question in panel 1
         let questionDiv = $('<div>')
@@ -73,11 +84,15 @@ class Page {
         let hint3Div = $('<div>').text('hint three').removeClass('d-none')
         this._panel4.append(hint3Div)
 
+        // return onbject of items that need adjusting
+        return {'button': button, 'input': input}
     }
 
     renderGameOver() {
         //clear screen
         this.clearScreen()
+        this._timer.addClass('d-none')
+        this._favicon.attr({'href': './assets/images/logo-closed.ico', 'type': "image/x-icon"})
 
         let gameOverDiv = $('<div>').text('Game Over').removeClass('d-none')
         this._panel1.append(gameOverDiv)
