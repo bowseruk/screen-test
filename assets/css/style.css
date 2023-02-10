@@ -4,7 +4,7 @@
 
 .panel {
     border: solid 1px black;
-    padding: 125px;
+    /* padding: 125px; */
     min-height: 25%;
 }
 
