@@ -5,10 +5,10 @@ class Controller {
         this._model = model;
         this._view = view;
     }
-    startGame() {
+    start() {
         // Set the score
         // Set the timer
-        this._model.startGame();
+        this._model.start();
         this.startTimer();
         // while (this._model._gameState === 1) {
 
@@ -23,10 +23,14 @@ class Controller {
     startTimer() {
         // event
         this._model.decrementTimer()
-        this._view.renderTimer()
+        this._view.renderTimer(this._model.timer)
     }
     saveScore() {
 
+    }
+    guess() {
+        // get choice
+        // feed choice to model
     }
     
 }

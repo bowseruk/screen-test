@@ -1,4 +1,10 @@
-.col-lg-6 {
+.game-screen {
+    min-height: 75vh;
+}
+
+.panel {
     border: solid 1px black;
     padding: 125px;
-};
+    min-height: 25%;
+}
+
