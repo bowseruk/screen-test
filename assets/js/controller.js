@@ -32,5 +32,12 @@ class Controller {
         // get choice
         // feed choice to model
     }
+    init() {
+        // start button function
+
+        // call function
+        this._view.renderStartScreen()
+    }
+
     
 }
