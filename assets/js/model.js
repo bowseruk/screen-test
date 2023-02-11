@@ -55,4 +55,7 @@ class Game {
     get gameState() {
         return this._gameStates[this._gameState];
     }
+    get question() {
+        return this._quiz.question;
+    }
 }
