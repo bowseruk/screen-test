@@ -1,5 +1,8 @@
 // This file houses the Controller. This controls interaction between the user, model and view.
 
+
+
+
 class Controller {
     constructor(model, view) {
         this._model = model;
@@ -25,7 +28,7 @@ class Controller {
             // Stop the function if the timer is at or below zero
             if (this._model.gameState === "Game Over") {
                 // Stops execution of action at set interval
-                this._view.renderGameOver()
+                this._view.renderGameOver(this.highScore)
                 clearInterval(this.timerInterval);
                 return
             } else if (this._paused) {
@@ -56,11 +59,22 @@ class Controller {
     init() {
         // start button function
 
+
+
+
         // call function
         let { button } = this._view.renderStartScreen()
         button.on("click", (event) => {
             event.preventDefault();
             this.start();
         })
+
     }
+
+    // Create the mockup of a highscreen array
+    get highScore() {
+return  [["CL",900],["AB",1000],["CI",2000]];
+    }
+
+
 }

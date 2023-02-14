@@ -88,7 +88,7 @@ class Page {
         return {'button': button, 'input': input}
     }
 
-    renderGameOver() {
+    renderGameOver(highScore) {
         //clear screen
         this.clearScreen()
         this._timer.addClass('d-none')
@@ -101,6 +101,15 @@ class Page {
         this._panel2.append(picture1Div)
 
         let highScoreDiv = $('<div>').text('high score goes here').removeClass('d-none')
+
+        // Loops through and shows the array elements
+        let scoreList =  $("<ol>")
+        highScore.forEach(element => {
+            scoreList.append($("<li>").text(`${element[0]} - ${element[1]}`))
+        });
+
+        // Displays the list of highscores which is an array
+highScoreDiv.append(scoreList)
         this._panel3.append(highScoreDiv)
 
         let picture2Div = $('<div>').text('picture goes here').removeClass('d-none')
