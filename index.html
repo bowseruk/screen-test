@@ -1,64 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Favicon -->
+    <link id="favicon" rel="icon" type="image/x-icon" href="./assets/images/logo-open.ico">
     <!-- Bootstrap 5.3 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
     <!-- fontawesome -->
 
-
     <!-- CSS -->
-    <link rel="stylesheet" href="./assets/css/style.css">
-
+    <link rel="stylesheet" href="./assets/css/style.css" />
     <title>Screen Test</title>
-
-</head>
-
-<body>
-
+  </head>
+  <body>
     <!-- header - main title/navbar -->
     <header class="container text-center p-4">
-        <h1 class="quiz-title">Screen Test</h1>
+      <h1 class="quiz-title">Screen Test</h1>
     </header>
-
     <!-- grid container -->
     <main class="container-fluid text-center">
-
-        <div class="game-screen row">
-
-            <div class="timer col-lg-12 order-4 order-lg-3 d-none">
-                <p id="total-score">10 points</p>
-                <p id="points-left">10 points</p>
-                <p id="timer">10 Seconds</p>
-            </div>
-
-            <!-- top left block -->
-            <div class="col-lg-6 order-5 order-lg-1 panel" id="panel-1">
-            </div>
-
-            <!-- top right block -->
-            <div class="col-lg-6 order-1 order-lg-2 d-none d-lg-block panel" id="panel-2">hint 1</div>
-
-            <!-- bottom left block -->
-            <div class="col-lg-6 order-2 order-lg-5 d-none d-lg-block panel" id="panel-3">hint 2</div>
-
-            <!-- bottom right block -->
-            <div class="col-lg-6 order-3 order-lg-4 d-none d-lg-block panel" id="panel-4">hint 3</div>
+      <div class="game-screen row">
+        <div id="timer" class="timer col-lg-12 order-4 order-lg-3 d-none">
+          <canvas id="timer-canvas"></canvas>
+          <p id="total-score">10 points</p>
+          <p id="points-left">10 points</p>
+          <p id="timer-display">10 Seconds</p>
         </div>
+        <!-- top left block -->
+        <div class="col-lg-6 order-5 order-lg-1 panel" id="panel-1"></div>
+        <!-- top right block -->
+        <div
+          class="col-lg-6 order-1 order-lg-2 d-none d-lg-block panel"
+          id="panel-2"
+        >
+          hint 1
+        </div>
+        <!-- bottom left block -->
+        <div
+          class="col-lg-6 order-2 order-lg-5 d-none d-lg-block panel"
+          id="panel-3"
+        >
+          hint 2
+        </div>
+        <!-- bottom right block -->
+        <div
+          class="col-lg-6 order-3 order-lg-4 d-none d-lg-block panel"
+          id="panel-4"
+        >
+          hint 3
+        </div>
+      </div>
     </main>
 
     <!-- footer -->
     <footer class="container text-center">
-        <h2>By No 1 Team</h2>
+      <h2>By No 1 Team</h2>
     </footer>
-
-
     <!-- scripts -->
     <!-- jQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -69,7 +73,5 @@
     <script src="./assets/js/controller.js"></script>
     <!-- JS -->
     <script type="text/javascript" src="./assets/js/script.js"></script>
-
-</body>
-
+  </body>
 </html>

@@ -1,30 +1,37 @@
 // This file houses the View. This controls what the user can see
 class Page {
-    constructor(panel1, panel2, panel3, panel4) {
+    constructor(panel1, panel2, panel3, panel4, timer, favicon) {
         this._panel1 = panel1;
         this._panel2 = panel2;
         this._panel3 = panel3;
         this._panel4 = panel4;
+        this._timer = timer
+        this._favicon = favicon
     }
     // Displays a timer with the seconds inputted
     renderTimer(seconds) {
-        
+        timer.children[2].innerText = seconds;
     }
+        // Displays a timer with the seconds inputted
+        renderScore(score) {
+            timer.children[0].innerText = score;
+        }
     // Clear the four game panels
     clearScreen() {
         // clear panel 1
-        this._panel1.empty()
+        this._panel1.empty().removeClass().addClass("panel col-lg-6 order-5 order-lg-1")
         // clear panel 2
-        this._panel2.empty()
+        this._panel2.empty().removeClass().addClass("panel col-lg-6 order-1 order-lg-2 d-none d-lg-block")
         // clear panel 3
-        this._panel3.empty()
+        this._panel3.empty().removeClass().addClass("panel col-lg-6 order-2 order-lg-5 d-none d-lg-block")
         // clear panel 4
-        this._panel4.empty()
+        this._panel4.empty().removeClass().addClass("panel col-lg-6 order-3 order-lg-4 d-none d-lg-block")
     }
     // Display the start screen
     renderStartScreen() {
         // clear screen
         this.clearScreen()
+        this._favicon.attr({'href': './assets/images/logo-open.ico', 'type': "image/x-icon"})
 
         // make all items central in panels
 
@@ -48,41 +55,49 @@ class Page {
 
         // Change contents
 
+        // return buttons that need altering
+        return { 'button': button }
     }
-    renderQuestion() {
+    renderQuestion(question) {
         // clear screen
         this.clearScreen()
+        this._timer.removeClass('d-none').addClass('active-timer')
+        this._favicon.attr({'href': './assets/images/logo-animate.ico', 'type': "image/gif" })
 
         // show question in panel 1
         let questionDiv = $('<div>')
-        let questionP = $('<p>').text("question array")
+        let questionP = $('<p>').text(`${question}`)
         let input = $('<input>')
         let button = $('<button>').attr({type:'submit'}).text('Submit')
 
         this._panel1.append(questionDiv.append(questionP, input, button))
 
         // show hint 1
-        let hint1Div = $('<div>').text('hint one').removeClass('d-none')
-        this._panel2.append(hint1Div)
+        let hint1Div = $('<div>').text('hint one')
+        this._panel2.removeClass('d-none').append(hint1Div)
 
         // show hint 2
-        let hint2Div = $('<div>').text('hint two').removeClass('d-none')
-        this._panel3.append(hint2Div)
+        let hint2Div = $('<div>').text('hint two')
+        this._panel3.removeClass('d-none').append(hint2Div)
 
         // show hint 3
-        let hint3Div = $('<div>').text('hint three').removeClass('d-none')
-        this._panel4.append(hint3Div)
+        let hint3Div = $('<div>').text('hint three')
+        this._panel4.removeClass('d-none').append(hint3Div)
 
+        // return onbject of items that need adjusting
+        return {'button': button, 'input': input}
     }
 
     renderGameOver() {
         //clear screen
         this.clearScreen()
+        this._timer.addClass('d-none')
+        this._favicon.attr({'href': './assets/images/logo-closed.ico', 'type': "image/x-icon"})
 
         let gameOverDiv = $('<div>').text('Game Over').removeClass('d-none')
         this._panel1.append(gameOverDiv)
 
-        let picture1Div = $('<div>').text('picture goes here').removeClass('d-none')
+        let picture1Div = $('<div>').text('picture goes here').removeClass('d-none').css({'height': '100%','background-image': 'url(http://placekitten.com/g/400/200) ,url(http://placekitten.com/g/300/200) ,url(http://placekitten.com/g/200/200)', 'background-repeat': 'repeat-x, repeat'})
         this._panel2.append(picture1Div)
 
         let highScoreDiv = $('<div>').text('high score goes here').removeClass('d-none')

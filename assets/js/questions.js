@@ -1,7 +1,16 @@
+// Represents a hint
+class Hint {
+    constructor() {
+
+    }
+}
+
 // This class describes a question in the game
 class Question {
-    constructor(answer) {
+    constructor(question, answer, hints) {
+        this._question = question;
         this._answer = answer.toLowerCase();
+        this._hints = hints
     }
     guess(guess) {
         // A good guess
@@ -11,6 +20,9 @@ class Question {
         // A bad guess
         return false;
     }
+    get question() {
+        return this._question
+    }
 }
 // This class is an extension of Question for movie based questions
 class MovieQuestion extends Question {
@@ -18,7 +30,7 @@ class MovieQuestion extends Question {
         // Get movie information from API
 
         // Calls the constructor for a Question
-        super(movie);
+        super("Guess the Movie?", movie, [movie, movie, movie]);
         this._movie = movie;
     }
 }
@@ -28,7 +40,7 @@ class YearQuestion extends Question {
         // Get year information here
 
         // Calls the constructor for a Question
-        super(year);
+        super("Guess the Year?", year, [year, year, year]);
         this.year = year;
     }
 }
@@ -40,8 +52,9 @@ class Quiz {
         this._ended = false;
     }
     // Shuffle the order of questions
-    shuffleQuestions() {
-        let currentIndex = this._questions.length, randomIndex;
+    shuffle(array) {
+        let currentIndex = array.length, randomIndex;
+
         // While there remain elements to shuffle.
         while (currentIndex != 0) {
 
@@ -50,11 +63,15 @@ class Quiz {
             currentIndex--;
 
             // And swap it with the current element.
-            [this._questions[currentIndex], this._questions[randomIndex]] = [
-                this._questions[randomIndex], this._questions[currentIndex]];
+            [array[currentIndex], array[randomIndex]] = [
+                array[randomIndex], array[currentIndex]];
         }
-        // Return true when complete
-        return true;
+
+        return array;
+    }
+    shuffleQuestions() {
+        this._questions = this.shuffle(this._questions)
+        // let currentIndex = this._questions.length, randomIndex;
     }
     // Accepts a guess for the current question. If it is correct it will move to the next question.
     guess(guess) {
@@ -91,5 +108,8 @@ class Quiz {
     }
     get isEnded() {
         return this._ended;
+    }
+    get question() {
+        return this.activeQuestion.question;
     }
 }

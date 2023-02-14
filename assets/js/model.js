@@ -2,7 +2,8 @@
 class Game {
     constructor(quiz) {
         this._quiz = quiz;
-        this._timer = 20;
+        this._timer = 40;
+        this._ticks = 1;
         this._score = 0;
         this._gameState = 0
         this._gameStates = ["Start Screen", "Game", "Game Over"]
@@ -18,7 +19,7 @@ class Game {
     // Logic to start the game
     start() {
         this._quiz.start()
-        this._timer = 40;
+        this._timer = 40 * this._ticks;
         this._gameState = 1;
         this._score = 0;
     }
@@ -43,9 +44,18 @@ class Game {
         return this._score;
     };
     get timer() {
-        return this._timer;
+        return Math.floor(this._timer/this._ticks);
+    }
+    get ticks() {
+        return this._ticks
     }
     get hints() {
         return false;
     };
+    get gameState() {
+        return this._gameStates[this._gameState];
+    }
+    get question() {
+        return this._quiz.question;
+    }
 }
