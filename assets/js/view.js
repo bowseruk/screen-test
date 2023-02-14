@@ -10,11 +10,11 @@ class Page {
     }
     // Displays a timer with the seconds inputted
     renderTimer(seconds) {
-        timer.children[2].innerText = seconds;
+        timer.children[3].innerText = seconds + "seconds";
     }
         // Displays a timer with the seconds inputted
         renderScore(score) {
-            timer.children[0].innerText = score;
+            timer.children[1].innerText = score + "points";
         }
     // Clear the four game panels
     clearScreen() {
@@ -58,7 +58,7 @@ class Page {
         // return buttons that need altering
         return { 'button': button }
     }
-    renderQuestion(question) {
+    renderQuestion(question, hints) {
         // clear screen
         this.clearScreen()
         this._timer.removeClass('d-none').addClass('active-timer')
@@ -73,15 +73,15 @@ class Page {
         this._panel1.append(questionDiv.append(questionP, input, button))
 
         // show hint 1
-        let hint1Div = $('<div>').text('hint one')
+        let hint1Div = $('<div>').text(hints[0].hint)
         this._panel2.removeClass('d-none').append(hint1Div)
 
         // show hint 2
-        let hint2Div = $('<div>').text('hint two')
+        let hint2Div = $('<div>').text(hints[1].hint)
         this._panel3.removeClass('d-none').append(hint2Div)
 
         // show hint 3
-        let hint3Div = $('<div>').text('hint three')
+        let hint3Div = $('<div>').text(hints[2].hint)
         this._panel4.removeClass('d-none').append(hint3Div)
 
         // return onbject of items that need adjusting

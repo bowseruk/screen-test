@@ -1,9 +1,15 @@
 // Represents a hint
 class Hint {
-    constructor() {
+    constructor(hinttext) {
+        this._hint = hinttext;
+    }
 
+    get hint() {
+        return this._hint;
     }
 }
+
+
 
 // This class describes a question in the game
 class Question {
@@ -21,7 +27,10 @@ class Question {
         return false;
     }
     get question() {
-        return this._question
+        return this._question;
+    }
+    get hints() {
+        return this._hints;
     }
 }
 // This class is an extension of Question for movie based questions
@@ -30,7 +39,7 @@ class MovieQuestion extends Question {
         // Get movie information from API
 
         // Calls the constructor for a Question
-        super("Guess the Movie?", movie, [movie, movie, movie]);
+        super("Guess the Movie?", movie, [new Hint(movie), new Hint(movie), new Hint(movie)]);
         this._movie = movie;
     }
 }
@@ -111,5 +120,8 @@ class Quiz {
     }
     get question() {
         return this.activeQuestion.question;
+    }
+    get hints() {
+        return this.activeQuestion.hints;
     }
 }
