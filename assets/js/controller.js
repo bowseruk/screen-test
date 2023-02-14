@@ -73,7 +73,17 @@ class Controller {
 
     // Create the mockup of a highscreen array
     get highScore() {
-return  [["CL",900],["AB",1000],["CI",2000]];
+
+
+        // we are checking the local storage is not empty
+if (! localStorage.getItem("Highscore")){
+    return [["No!","Score"]];
+    }
+
+    // we getting the information in local storage
+    return JSON.parse(localStorage.getItem("Highscore"));
+
+
     }
 
 
