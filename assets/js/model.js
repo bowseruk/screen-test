@@ -25,9 +25,12 @@ class Game {
     }
     // Logic when a guess is made
     guess(guess){
+        // if the game isn't active
         if (this._gameState !== 1) {
             return false;
         };
+
+        // if the game is active
         if (this._quiz.guess(guess)){
             this._score++;
             if (this._quiz.isEnded) {
@@ -50,7 +53,7 @@ class Game {
         return this._ticks
     }
     get hints() {
-        return false;
+        return this._quiz.hints;
     };
     get gameState() {
         return this._gameStates[this._gameState];

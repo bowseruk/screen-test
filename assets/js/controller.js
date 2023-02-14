@@ -10,7 +10,7 @@ class Controller {
         this._model.start();
         this._view.renderScore(this._model.score)
         this.startTimer();
-        let { button, input } = this._view.renderQuestion(this._model.question)
+        let { button, input } = this._view.renderQuestion(this._model.question, this._model.hints)
         button.on("click", (event) => {
             console.log(input.val())
             this.guess(input.val())
@@ -46,7 +46,7 @@ class Controller {
         // feed choice to model
         if (this._model.guess(guess)) {
             this._view.renderScore(this._model.score);
-            let { button, input } = this._view.renderQuestion(this._model.question)
+            let { button, input } = this._view.renderQuestion(this._model.question, this._model.hints)
             button.on("click", (event) => {
                 console.log(input.val())
                 this.guess(input.val())
