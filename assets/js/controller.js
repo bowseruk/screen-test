@@ -36,7 +36,7 @@ class Controller {
                 // Stops execution of action at set interval
                 this._view.renderGameOver(this.highScore)
                 clearInterval(this.timerInterval);
-                localStorage.setItem("Highscore",JSON.stringify(this.highScore.push([localStorage.getItem("PlayerName"),this.model.score])));
+                this.addToHighScore(localStorage.getItem("PlayerName"), this._model.score);
                 return
             } else if (this._paused) {
                 return
@@ -46,9 +46,6 @@ class Controller {
             this._view.renderTimer(this._model.timer)
             // The number below here is how many millisecons to run this function            
         }, (Math.floor(1000 / this._model.ticks)));
-    }
-    saveScore() {
-
     }
     guess(guess) {
         // get choice
@@ -64,13 +61,9 @@ class Controller {
         }
     }
     init() {
-        // start button function
-
-
-
-
-        // call function
+        // destructor on return items from display
         let { button } = this._view.renderStartScreen()
+        // start button function
         button.on("click", (event) => {
             event.preventDefault();
             this.start();
@@ -92,21 +85,38 @@ class Controller {
         // otherwise save name to storage
         localStorage.setItem("PlayerName", $("#player-name").val());
     }
-
+    // This function adds a new value to high score
+    addToHighScore(name, score) {
+        let highScoreArray = this.highScore;
+        highScoreArray.push([name, score])
+        highScoreArray.sort().reverse()
+        // Limit high score to 10
+        if (highScoreArray.length > 10) {
+            highScoreArray.pop();
+        }
+        this.highScore = highScoreArray;
+    }
     // Create the mockup of a highscreen array
     get highScore() {
-
-
         // we are checking the local storage is not empty
         if (!localStorage.getItem("Highscore")) {
-            return [["No!", "Score"]];
+            return [];
         }
-
         // we getting the information in local storage
-        return JSON.parse(localStorage.getItem("Highscore"));
-
-
+        let highScoreArray = JSON.parse(localStorage.getItem("Highscore"))
+        console.log()
+        highScoreArray.sort().reverse()
+        return highScoreArray;
     }
-
-
+    set highScore(array) {
+        if (typeof array !== 'object') {
+            return false;
+        }
+        if (array.length === 0) {
+            localStorage.removeItem("Highscore")
+            return true;
+        }
+        localStorage.setItem("Highscore", JSON.stringify(array))
+        return true;
+    }
 }

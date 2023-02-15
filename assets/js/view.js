@@ -83,35 +83,30 @@ class Page {
         // generate hint 2
         let hint2Div = $('<div>');
         this._panel3.removeClass('d-none').append(hint2Div);
-        
+
         // split actor array into separate actors
-        hints[1].hint.split(",").forEach(element => {
+        let element = hints[1].hint.split(",")[0]
 
-            var giphyAPIKey = "TpCd8mDzwDatSRlW5OE4uVl2OfAuTE1F";
-            var hintObject = this;
+        var giphyAPIKey = "TpCd8mDzwDatSRlW5OE4uVl2OfAuTE1F";
 
-            var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + element + "&api_key=" + giphyAPIKey;
+        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + element + "&api_key=" + giphyAPIKey;
 
-            // call giphy API
-            $.ajax({
-                url: queryURL,
-                method: "GET"
-            }).then(function (response) {
+        // call giphy API
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        }).then(function (response) {
 
-                // Creating an image tag
-                var gifImage = $("<img>");
+            // Creating an image tag
+            var gifImage = $("<img>");
 
-                // Setting the src attribute of the image
-                gifImage.attr("src", response.data[0].images.fixed_height.url);
+            // Setting the src attribute of the image
+            gifImage.attr("src", response.data[0].images.fixed_height.url);
 
-                // show hint 2
-                hint2Div.append(gifImage);
+            // show hint 2
+            hint2Div.append(gifImage);
 
-            });
-
-        })
-
-
+        });
         // show hint 3
         let hint3Div = $('<div>').text(hints[2].hint)
         this._panel4.removeClass('d-none').append(hint3Div)
@@ -137,9 +132,13 @@ class Page {
 
         // Loops through and shows the array elements
         let scoreList = $("<ol>")
+        if (highScore.length > 0) {
         highScore.forEach(element => {
             scoreList.append($("<li>").text(`${element[0]} - ${element[1]}`))
         });
+    } else {
+        scoreList.append($("<li>").text(`No Scores Recorded Yet!`))
+    }
 
         // Displays the list of highscores which is an array
         highScoreDiv.append(scoreList)
