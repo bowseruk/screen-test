@@ -32,6 +32,7 @@
             </div>
             Screen Test
           </a>
+          <!-- Button trigger modal -->
           <form class="d-flex" role="search">
             <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
               <i class="fa-solid fa-gear"></i>
@@ -72,8 +73,6 @@
   <footer class="container text-center">
     <h2><i class="fa-solid fa-film"></i> By Number 1 Team <i class="fa-solid fa-film"></i></h2>
   </footer>
-  <!-- Button trigger modal -->
-
 
   <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -84,11 +83,14 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <Input type="text">
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="player-name" placeholder="Tell us your name">
+            <label for="player-name">Tell us your name</label>
+          </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn btn-primary" id="save-player-name">Save changes</button>
         </div>
       </div>
     </div>
