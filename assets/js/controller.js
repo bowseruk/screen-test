@@ -1,8 +1,5 @@
 // This file houses the Controller. This controls interaction between the user, model and view.
 
-
-
-
 class Controller {
     constructor(model, view) {
         this._model = model;
@@ -10,6 +7,15 @@ class Controller {
         this._paused = false;
     }
     start() {
+
+        // if player name is blank
+        if (! localStorage.getItem("PlayerName")) {
+
+            //open modal
+            $("#exampleModal").modal("show")
+            return;
+        }        
+
         this._model.start();
         this._view.renderScore(this._model.score)
         this.startTimer();
@@ -69,6 +75,21 @@ class Controller {
             this.start();
         })
 
+        $("#save-player-name").on("click", this.saveName);
+
+    }
+
+    // save changes modal button
+    saveName() {
+
+        // if player name is blank ask player to enter name
+        if ($("#player-name").val() === "") {
+
+            // add enter name message OR turn box red?
+            return;
+        }
+        // otherwise save name to storage
+        localStorage.setItem("PlayerName", $("#player-name").val());
     }
 
     // Create the mockup of a highscreen array
@@ -76,12 +97,12 @@ class Controller {
 
 
         // we are checking the local storage is not empty
-if (! localStorage.getItem("Highscore")){
-    return [["No!","Score"]];
-    }
+        if (!localStorage.getItem("Highscore")) {
+            return [["No!", "Score"]];
+        }
 
-    // we getting the information in local storage
-    return JSON.parse(localStorage.getItem("Highscore"));
+        // we getting the information in local storage
+        return JSON.parse(localStorage.getItem("Highscore"));
 
 
     }
