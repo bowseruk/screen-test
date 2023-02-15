@@ -1,7 +1,17 @@
 body {
+    /* background-image: url("../images/popcorn.png"); */
     --primary-color: black;
     --secondary-color: white;
     --tertiary-color: grey;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'limelight', Arial, Helvetica, sans-serif
+}
+
+header footer {
+    background-color: (var(--primary-color));
+    color: var(--secondary-color);
+    z-index: 5;
 }
 
 .brand-img {
@@ -65,9 +75,6 @@ body {
         display: flex;
         align-items: center;
         justify-content: center;
-        background-image: url("../images/popcorn.png");
-        background-repeat: no-repeat;
-        background-size: cover;
     }
 
     .panel {
