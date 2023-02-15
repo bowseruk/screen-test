@@ -17,9 +17,9 @@ class Controller {
         }
 
         this._model.start();
-        this._view.renderScore(this._model.score)
         this.startTimer();
-        let { button, input } = this._view.renderQuestion(this._model.question, this._model.hints)
+        let { button, input } = this._view.renderQuestion(this._model.question, this._model.hints);
+        this._view.renderScore(this._model.score);
         input.trigger('focus')
         input.on("keydown", (event) => {
             // If the user presses the "Enter" key on the keyboard
@@ -64,11 +64,10 @@ class Controller {
     }
     guess(guess) {
         // get choice
-        console.log(guess);
         // feed choice to model
         if (this._model.guess(guess)) {
-            this._view.renderScore(this._model.score);
             let { button, input } = this._view.renderQuestion(this._model.question, this._model.hints);
+            this._view.renderScore(this._model.score);
             input.trigger('focus');
             input.on("keydown", (event) => {
                 // If the user presses the "Enter" key on the keyboard
@@ -126,9 +125,21 @@ class Controller {
             return [];
         }
         // we getting the information in local storage
-        let highScoreArray = JSON.parse(localStorage.getItem("Highscore"))
-        console.log()
-        highScoreArray.sort().reverse()
+        let highScoreArray = JSON.parse(localStorage.getItem("Highscore"));
+        if (typeof highScoreArray !== 'object') {
+            localStorage.removeItem("Highscore");
+            return [];
+        }
+        highScoreArray.forEach(element => {
+            if(element.length < 2) {
+                localStorage.removeItem("Highscore");
+                return [];
+            }
+            element[1] = parseInt(element[1])
+        })
+        highScoreArray.sort(function(a,b) {
+            return a[1]-b[1]
+        }).reverse()
         return highScoreArray;
     }
     set highScore(array) {
@@ -139,6 +150,9 @@ class Controller {
             localStorage.removeItem("Highscore")
             return true;
         }
+        array.sort(function(a,b) {
+            return a[1]-b[1]
+        }).reverse()
         localStorage.setItem("Highscore", JSON.stringify(array))
         return true;
     }

@@ -19,8 +19,8 @@ class Page {
     }
     // Clear the four game panels
     clearScreen() {
-        $('#timer-display').text();
-        $('#total-score').text();
+        $('#timer-display').text(null);
+        $('#total-score').text(null);
         // clear panel 1
         this._panel1.empty().removeClass().addClass("panel col-lg-6 order-5 order-lg-1")
         // clear panel 2
@@ -78,7 +78,6 @@ class Page {
         this._panel1.append(questionDiv.append(questionP, input, button))
 
         // show hint 1
-        console.log(hints)
         let hint1Div = $('<div>').text(hints[0].hint)
         this._panel2.removeClass('d-none').append(hint1Div)
 
