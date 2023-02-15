@@ -40,21 +40,29 @@ class MovieQuestion extends Question {
     constructor(movie) {
         // Get movie information from API
 
+        
+
+        // Calls the constructor for a Question
+        super("Guess the Movie?", movie, [undefined,undefined,undefined]);
+        this._movie = movie;
+        this.makeHints()
+
+    }
+    makeHints() {
         var omdbAPIKey = "5ddc668b";
-        var queryURL = "https://www.omdbapi.com/?t=" + movie + "&apikey=" + omdbAPIKey;
+        var queryURL = "https://www.omdbapi.com/?t=" + this._movie + "&apikey=" + omdbAPIKey;
+        var hintObject = this
+ 
 
         $.ajax({
             url: queryURL,
             method: "GET"
         }).then(function (response) {
 
-            hint = [new Hint(response.Plot), new Hint(response.Actors), new Hint(response.Year)];
+           hintObject._hints = [new Hint(response.Plot), new Hint(response.Actors), new Hint(response.Year)];
+           console.log(this._hints,this)
 
         });
-
-        // Calls the constructor for a Question
-        super("Guess the Movie?", movie, hint);
-        this._movie = movie;
 
     }
 }

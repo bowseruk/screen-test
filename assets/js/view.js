@@ -76,6 +76,7 @@ class Page {
         this._panel1.append(questionDiv.append(questionP, input, button))
 
         // show hint 1
+        console.log(hints)
         let hint1Div = $('<div>').text(hints[0].hint)
         this._panel2.removeClass('d-none').append(hint1Div)
 
