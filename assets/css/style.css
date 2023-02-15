@@ -62,6 +62,12 @@ header footer {
     padding: 0;
 }
 
+@media screen and (max-width: 450px) {
+    #navbar-title {
+        display: none;
+    }    
+}
+
 @media screen and (min-width: 992px) {
     .active-timer {
         position:absolute;
@@ -80,6 +86,8 @@ header footer {
     .panel {
         max-height: 50vh;
     }
+
+
 }
 
 

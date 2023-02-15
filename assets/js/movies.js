@@ -1,2 +1,2 @@
 const moviesList = ["Titanic","The Rock","Face/Off","Inception","Interstellar","Goodfellas","The Dark Knight","Jaws","Pulp Fiction","The Truman Show","The Exorcist","Forrest Gump","The Running Man"];
-const badMovies = ["Lockstock","w"];
+const badMovies = ["Lockstock","w","Face Off"];

@@ -11,14 +11,16 @@ class Page {
     }
     // Displays a timer with the seconds inputted
     renderTimer(seconds) {
-        timer.children[3].innerText = seconds + "seconds";
+        $('#timer-display').text(seconds + "seconds");
     }
     // Displays a timer with the seconds inputted
     renderScore(score) {
-        timer.children[1].innerText = score + "points";
+        $('#total-score').text(score + " points");
     }
     // Clear the four game panels
     clearScreen() {
+        $('#timer-display').text();
+        $('#total-score').text();
         // clear panel 1
         this._panel1.empty().removeClass().addClass("panel col-lg-6 order-5 order-lg-1")
         // clear panel 2
@@ -63,7 +65,7 @@ class Page {
     renderQuestion(question, hints) {
         // clear screen
         this.clearScreen()
-        this._timer.removeClass('d-none').addClass('active-timer')
+        // this._timer.removeClass('d-none').addClass('active-timer')
         this._favicon.attr({ 'href': './assets/images/logo-animate.ico', 'type': "image/gif" })
         this._logo.removeClass('brand-logo-closed').addClass('brand-logo')
 
@@ -114,7 +116,7 @@ class Page {
         // return onbject of items that need adjusting
         return { 'button': button, 'input': input }
     }
-
+    // Make the game over screen
     renderGameOver(highScore) {
         //clear screen
         this.clearScreen()
@@ -122,13 +124,15 @@ class Page {
         this._favicon.attr({ 'href': './assets/images/logo-closed.ico', 'type': "image/x-icon" })
         this._logo.removeClass('brand-logo').addClass('brand-logo-closed')
 
-        let gameOverDiv = $('<div>').text('Game Over').removeClass('d-none')
-        this._panel1.append(gameOverDiv)
+        let gameOverDiv = $('<div>').text('Game Over')
+        let replayButton = $('<button>').addClass("btn").text("Play Again?")
+        gameOverDiv.append(replayButton);
+        this._panel1.removeClass('d-none').append(gameOverDiv)
 
         let picture1Div = $('<div>').text('picture goes here').removeClass('d-none').css({ 'height': '100%', 'background-image': 'url(http://placekitten.com/g/400/200) ,url(http://placekitten.com/g/300/200) ,url(http://placekitten.com/g/200/200)', 'background-repeat': 'repeat-x, repeat' })
         this._panel2.append(picture1Div)
 
-        let highScoreDiv = $('<div>').text('high score goes here').removeClass('d-none')
+        let highScoreDiv = $('<div>').text('high score goes here')
 
         // Loops through and shows the array elements
         let scoreList = $("<ol>")
@@ -142,12 +146,12 @@ class Page {
 
         // Displays the list of highscores which is an array
         highScoreDiv.append(scoreList)
-        this._panel3.append(highScoreDiv)
+        this._panel3.removeClass('d-none').append(highScoreDiv)
 
         let picture2Div = $('<div>').text('picture goes here').removeClass('d-none')
         this._panel4.append(picture2Div)
 
-
+        return {"replayButton": replayButton}
     }
 
 

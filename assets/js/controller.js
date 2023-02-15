@@ -9,19 +9,30 @@ class Controller {
     start() {
 
         // if player name is blank
-        if (! localStorage.getItem("PlayerName")) {
+        if (!localStorage.getItem("PlayerName")) {
 
             //open modal
             $("#exampleModal").modal("show")
             return;
-        }        
+        }
 
         this._model.start();
         this._view.renderScore(this._model.score)
         this.startTimer();
         let { button, input } = this._view.renderQuestion(this._model.question, this._model.hints)
+        input.trigger('focus')
+        input.on("keydown", (event) => {
+            // If the user presses the "Enter" key on the keyboard
+            if (event.key === "Enter") {
+                // Cancel the default action, if needed
+                event.preventDefault();
+                // Trigger the button element with a click
+                this.guess(input.val())
+            }
+        });
         button.on("click", (event) => {
-            console.log(input.val())
+            // Cancel the default action, if needed
+            event.preventDefault();
             this.guess(input.val())
         })
     }
@@ -34,9 +45,13 @@ class Controller {
             // Stop the function if the timer is at or below zero
             if (this._model.gameState === "Game Over") {
                 // Stops execution of action at set interval
-                this._view.renderGameOver(this.highScore)
                 clearInterval(this.timerInterval);
                 this.addToHighScore(localStorage.getItem("PlayerName"), this._model.score);
+                let { replayButton } = this._view.renderGameOver(this.highScore)
+                replayButton.on("click", (event => {
+                    event.preventDefault();
+                    this.init()
+                }));
                 return
             } else if (this._paused) {
                 return
@@ -53,11 +68,21 @@ class Controller {
         // feed choice to model
         if (this._model.guess(guess)) {
             this._view.renderScore(this._model.score);
-            let { button, input } = this._view.renderQuestion(this._model.question, this._model.hints)
+            let { button, input } = this._view.renderQuestion(this._model.question, this._model.hints);
+            input.trigger('focus');
+            input.on("keydown", (event) => {
+                // If the user presses the "Enter" key on the keyboard
+                if (event.key === "Enter") {
+                    // Cancel the default action, if needed
+                    event.preventDefault();
+                    // Trigger the button element with a click
+                    this.guess(input.val());
+                }
+            });
             button.on("click", (event) => {
-                console.log(input.val())
-                this.guess(input.val())
-            })
+                event.preventDefault();
+                this.guess(input.val());
+            });
         }
     }
     init() {
@@ -70,12 +95,10 @@ class Controller {
         })
 
         $("#save-player-name").on("click", this.saveName);
-
     }
 
     // save changes modal button
     saveName() {
-
         // if player name is blank ask player to enter name
         if ($("#player-name").val() === "") {
 

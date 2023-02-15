@@ -30,10 +30,15 @@
           <a class="navbar-brand" href="#">
             <div id="navbar-logo" alt="Logo" height="30" class="brand-img brand-logo d-inline-block align-text-top">
             </div>
-            Screen Test
+            <span id="navbar-title">Screen Test</span>
           </a>
           <!-- Button trigger modal -->
+
+              <span class="navbar-text"></span>
+              <span class="navbar-text" id="total-score"></span>
+              <span class="navbar-text" id="timer-display"></span>
           <form class="d-flex" role="search">
+
             <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
               <i class="fa-solid fa-gear"></i>
             </button>
@@ -47,9 +52,9 @@
       <div class="game-screen row">
         <div id="timer" class="timer col-lg-12 order-4 order-lg-3 d-none">
           <canvas id="timer-canvas"></canvas>
-          <p id="total-score"></p>
+          <!-- <p id="total-score"></p>
           <p id="points-left"></p>
-          <p id="timer-display"></p>
+          <p id="timer-display"></p> -->
         </div>
         <!-- top left block -->
         <div class="col-lg-6 order-5 order-lg-1 panel" id="panel-1"></div>
