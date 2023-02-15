@@ -14,18 +14,28 @@
       crossorigin="anonymous"
     />
     <!-- fontawesome -->
-
+    <script src="https://kit.fontawesome.com/0dd9fad87f.js" crossorigin="anonymous"></script>
     <!-- CSS -->
     <link rel="stylesheet" href="./assets/css/style.css" />
     <title>Screen Test</title>
   </head>
   <body>
     <!-- header - main title/navbar -->
-    <header class="container text-center p-4">
-      <h1 class="quiz-title">Screen Test</h1> 
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        Settings
-      </button>
+    <header>
+      <nav class="navbar bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <div id="navbar-logo" alt="Logo" height="30" class="brand-img brand-logo d-inline-block align-text-top"></div>
+            Screen Test
+          </a>
+          <form class="d-flex" role="search">
+            <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              <i class="fa-solid fa-gear"></i>
+            </button>
+          </form>
+        </div>
+      </nav>
+      <h1 class="d-none">Screen Test</h1> 
     </header>
     <!-- grid container -->
     <main class="container-fluid text-center">
@@ -39,24 +49,15 @@
         <!-- top left block -->
         <div class="col-lg-6 order-5 order-lg-1 panel" id="panel-1"></div>
         <!-- top right block -->
-        <div
-          class="col-lg-6 order-1 order-lg-2 d-none d-lg-block panel"
-          id="panel-2"
-        >
+        <div class="col-lg-6 order-1 order-lg-2 d-none d-lg-block panel" id="panel-2">
           hint 1
         </div>
         <!-- bottom left block -->
-        <div
-          class="col-lg-6 order-2 order-lg-5 d-none d-lg-block panel"
-          id="panel-3"
-        >
+        <div class="col-lg-6 order-2 order-lg-5 d-none d-lg-block panel" id="panel-3">
           hint 2
         </div>
         <!-- bottom right block -->
-        <div
-          class="col-lg-6 order-3 order-lg-4 d-none d-lg-block panel"
-          id="panel-4"
-        >
+        <div class="col-lg-6 order-3 order-lg-4 d-none d-lg-block panel" id="panel-4">
           hint 3
         </div>
       </div>
