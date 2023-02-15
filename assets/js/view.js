@@ -1,11 +1,12 @@
 // This file houses the View. This controls what the user can see
 class Page {
-    constructor(panel1, panel2, panel3, panel4, timer, favicon) {
+    constructor(panel1, panel2, panel3, panel4, timer, logo, favicon) {
         this._panel1 = panel1;
         this._panel2 = panel2;
         this._panel3 = panel3;
         this._panel4 = panel4;
         this._timer = timer
+        this._logo = logo
         this._favicon = favicon
     }
     // Displays a timer with the seconds inputted
@@ -32,6 +33,7 @@ class Page {
         // clear screen
         this.clearScreen()
         this._favicon.attr({'href': './assets/images/logo-open.ico', 'type': "image/x-icon"})
+        this._logo.removeClass('brand-logo-closed').addClass('brand-logo')
 
         // make all items central in panels
 
@@ -63,6 +65,7 @@ class Page {
         this.clearScreen()
         this._timer.removeClass('d-none').addClass('active-timer')
         this._favicon.attr({'href': './assets/images/logo-animate.ico', 'type': "image/gif" })
+        this._logo.removeClass('brand-logo-closed').addClass('brand-logo')
 
         // show question in panel 1
         let questionDiv = $('<div>')
@@ -93,6 +96,7 @@ class Page {
         this.clearScreen()
         this._timer.addClass('d-none')
         this._favicon.attr({'href': './assets/images/logo-closed.ico', 'type': "image/x-icon"})
+        this._logo.removeClass('brand-logo').addClass('brand-logo-closed')
 
         let gameOverDiv = $('<div>').text('Game Over').removeClass('d-none')
         this._panel1.append(gameOverDiv)

@@ -1,5 +1,39 @@
+body {
+    --primary-color: black;
+    --secondary-color: white;
+    --tertiary-color: grey;
+}
+
+.brand-img {
+    height: 30px;
+    width: 35px;
+    background-size: cover;
+    transition: background-image 500ms linear;
+}
+
+.brand-logo {
+    background-image: url('../images/Screen\ Time\ Logo\ Opened\ Shadow.png');
+
+}
+
+.brand-logo:hover {
+    background-image: url('../images/Screen\ Time\ Logo\ Opened.png');
+}
+
+.brand-logo-closed {
+    background-image: url('../images/Screen\ Time\ Logo\ Closed\ Shadow.png');
+}
+
+.brand-logo-closed:hover {
+    background-image: url('../images/Screen\ Time\ Logo\ Closed.png');
+}
+
 .game-screen {
-    min-height: 75vh;
+    min-height: calc(100vh - 40px - 60px);
+}
+
+.spacer-for-footer {
+    min-height: calc(100vh - 40px);
 }
 
 .panel {
@@ -31,6 +65,9 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        background-image: url("../images/popcorn.png");
+        background-repeat: no-repeat;
+        background-size: cover;
     }
 
     .panel {
