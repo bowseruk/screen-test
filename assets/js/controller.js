@@ -36,6 +36,7 @@ class Controller {
                 // Stops execution of action at set interval
                 this._view.renderGameOver(this.highScore)
                 clearInterval(this.timerInterval);
+                localStorage.setItem("Highscore",JSON.stringify(this.highScore.push([localStorage.getItem("PlayerName"),this.model.score])));
                 return
             } else if (this._paused) {
                 return
