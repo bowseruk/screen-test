@@ -29,7 +29,11 @@ body {
 }
 
 .game-screen {
-    min-height: 75vh;
+    min-height: calc(100vh - 40px - 60px);
+}
+
+.spacer-for-footer {
+    min-height: calc(100vh - 40px);
 }
 
 .panel {

@@ -1,31 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Favicon -->
-    <link id="favicon" rel="icon" type="image/x-icon" href="./assets/images/logo-open.ico">
-    <!-- Bootstrap 5.3 -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
-      crossorigin="anonymous"
-    />
-    <!-- fontawesome -->
-    <script src="https://kit.fontawesome.com/0dd9fad87f.js" crossorigin="anonymous"></script>
-    <!-- CSS -->
-    <link rel="stylesheet" href="./assets/css/style.css" />
-    <title>Screen Test</title>
-  </head>
-  <body>
-    <!-- header - main title/navbar -->
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Favicon -->
+  <link id="favicon" rel="icon" type="image/x-icon" href="./assets/images/logo-open.ico">
+  <!-- Bootstrap 5.3 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
+  <!-- fontawesome -->
+  <script src="https://kit.fontawesome.com/0dd9fad87f.js" crossorigin="anonymous"></script>
+  <!-- CSS -->
+  <link rel="stylesheet" href="./assets/css/style.css" />
+  <title>Screen Test</title>
+</head>
+
+<body>
+  <!-- header - main title/navbar -->
+  <div class="spacer-for-footer">
     <header>
       <nav class="navbar bg-body-tertiary">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">
-            <div id="navbar-logo" alt="Logo" height="30" class="brand-img brand-logo d-inline-block align-text-top"></div>
+            <div id="navbar-logo" alt="Logo" height="30" class="brand-img brand-logo d-inline-block align-text-top">
+            </div>
             Screen Test
           </a>
           <form class="d-flex" role="search">
@@ -35,7 +35,7 @@
           </form>
         </div>
       </nav>
-      <h1 class="d-none">Screen Test</h1> 
+      <h1 class="d-none">Screen Test</h1>
     </header>
     <!-- grid container -->
     <main class="container-fluid text-center">
@@ -62,43 +62,47 @@
         </div>
       </div>
     </main>
+  </div>
 
-    <!-- footer -->
-    <footer class="container text-center">
-      <h2>By No 1 Team</h2>
-    </footer>
-    <!-- Button trigger modal -->
+  <!-- footer -->
+  <footer class="container text-center">
+    <h2><i class="fa-solid fa-film"></i> By Number 1 Team <i class="fa-solid fa-film"></i></h2>
+  </footer>
+  <!-- Button trigger modal -->
 
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <Input type="text">
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <Input type="text">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
-    <!-- scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-    <!-- jQuery -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!-- JS Game Items -->
-    <script src="./assets/js/questions.js"></script>
-    <script src="./assets/js/model.js"></script>
-    <script src="./assets/js/view.js"></script>
-    <script src="./assets/js/controller.js"></script>
-    <!-- JS -->
-    <script type="text/javascript" src="./assets/js/script.js"></script>
-  
-  </body>
+  <!-- scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"></script>
+  <!-- jQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- JS Game Items -->
+  <script src="./assets/js/questions.js"></script>
+  <script src="./assets/js/model.js"></script>
+  <script src="./assets/js/view.js"></script>
+  <script src="./assets/js/controller.js"></script>
+  <!-- JS -->
+  <script type="text/javascript" src="./assets/js/script.js"></script>
+
+</body>
+
 </html>
