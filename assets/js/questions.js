@@ -34,13 +34,28 @@ class Question {
     }
 }
 // This class is an extension of Question for movie based questions
+var hint = [];
+
 class MovieQuestion extends Question {
     constructor(movie) {
         // Get movie information from API
 
+        var omdbAPIKey = "5ddc668b";
+        var queryURL = "https://www.omdbapi.com/?t=" + movie + "&apikey=" + omdbAPIKey;
+
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        }).then(function (response) {
+
+            hint = [new Hint(response.Plot), new Hint(response.Actors), new Hint(response.Year)];
+
+        });
+
         // Calls the constructor for a Question
-        super("Guess the Movie?", movie, [new Hint(movie), new Hint(movie), new Hint(movie)]);
+        super("Guess the Movie?", movie, hint);
         this._movie = movie;
+
     }
 }
 
