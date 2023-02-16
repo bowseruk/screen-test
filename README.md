@@ -8,9 +8,6 @@ A movie themed interactive quiz where users have to guess the movie title based 
 * a gif of one of the actors
 * the plot
 
-## Preview
-[add image here]
-
 ## Motivation
 We decided to create this project because we all share a love for movies and wanted to produce an application which users could enjoy interacting with.
 
@@ -32,6 +29,13 @@ Successes:
 ## APIs Used
 * OMDb - http://www.omdbapi.com/
 * Giphy - https://developers.giphy.com/
+
+## Preview
+[add image here]
+
+## Deployed Links
+* GitHub Repository: https://bowseruk.github.io/screen-test/
+* Deployed page: https://github.com/bowseruk/screen-test
 
 ## Future Developments
 * Clock in the center revealing hints as time passes, but deducting points
