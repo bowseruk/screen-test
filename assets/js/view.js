@@ -88,17 +88,19 @@ class Page {
         this._panel1.append(questionDiv.append(questionP, input, button))
 
         // show hint 1
-        let hint1Div = $('<div>').text(hints[0].hint).css({
+        let hint1Div = $('<div>').addClass("hint").css({
             "height": "100%",
             "width": "100%"
         }).addClass('d-flex justify-content-center align-items-center p-5')
-        this._panel2.removeClass('d-none').append(hint1Div)
+        let curtainVideo1 = $('<video>').attr({"width":"100%", "height":"100%", "src":"assets/sfx/hsl edit 10_VP9.webm" ,"onclick":"play()"})
+        this._panel2.removeClass('d-none').append(hint1Div.append(curtainVideo1, $('<p>').text(hints[0].hint)))
 
         // generate hint 2
-        let hint2Div = $('<div>').css({
+        let hint2Div = $('<div>').addClass("hint").css({
             "height": "100%",
             "width": "100%"
         }).addClass('d-flex justify-content-center align-items-center p-3');
+        let curtainVideo2 = $('<video>').attr({"width":"100%", "height":"100%", "src":"assets/sfx/hsl edit 10_VP9.webm" ,"onclick":"play()"})
         this._panel3.removeClass('d-none').append(hint2Div);
 
         // split actor array into separate actors
@@ -121,16 +123,18 @@ class Page {
             gifImage.attr("src", response.data[0].images.fixed_height.url);
 
             // show hint 2
-            hint2Div.append(gifImage);
+            hint2Div.append(curtainVideo2,gifImage);
 
         });
 
         // show hint 3
-        let hint3Div = $('<div>').text(hints[2].hint).css({
+        let hint3Div = $('<div>').css({
             "height": "100%",
             "width": "100%"
         }).addClass('d-flex justify-content-center align-items-center p-5')
-        this._panel4.removeClass('d-none').append(hint3Div)
+        let curtainVideo3 = $('<video>').attr({"width":"100%", "height":"100%", "src":"assets/sfx/hsl edit 10_VP9.webm" ,"onclick":"play()"});
+        this._panel4.removeClass('d-none').append(hint3Div.append(curtainVideo3, $('<p>').text(hints[2].hint)))
+
 
         // return onbject of items that need adjusting
         return { 'button': button, 'input': input }
