@@ -85,33 +85,44 @@ class Controller {
         }
     }
     init() {
+        // Let you press enter on the modal input
+        $("#player-name").on("keydown", (event) => {
+            // If the user presses the "Enter" key on the keyboard
+            if (event.key === "Enter") {
+                // Cancel the default action, if needed
+                event.preventDefault();
+                // Trigger the button element with a click
+                this.saveName();
+            }
+        });
+        $("#player-name")
         // destructor on return items from display
-        let { button } = this._view.renderStartScreen()
+        let { button } = this._view.renderStartScreen(this.highScore)
         // start button function
         button.on("click", (event) => {
             event.preventDefault();
             this.start();
         })
-
-        $("#save-player-name").on("click", this.saveName);
+        $("#save-player-name").on("click", event => {
+            this.saveName();
+        })       
     }
-
     // save changes modal button
     saveName() {
-        // if player name is blank ask player to enter name
-        if ($("#player-name").val() === "") {
-
-            // add enter name message OR turn box red?
-            return;
+        this.playerName = $("#player-name").val()
+        if (this.playerName === undefined) {
+            return false;
         }
-        // otherwise save name to storage
-        localStorage.setItem("PlayerName", $("#player-name").val());
+        $("#exampleModal").modal("toggle");
+        return true;
     }
     // This function adds a new value to high score
     addToHighScore(name, score) {
         let highScoreArray = this.highScore;
         highScoreArray.push([name, score])
-        highScoreArray.sort().reverse()
+        highScoreArray.sort(function(a,b) {
+            return a[1]-b[1]
+        }).reverse()
         // Limit high score to 10
         if (highScoreArray.length > 10) {
             highScoreArray.pop();
@@ -154,6 +165,22 @@ class Controller {
             return a[1]-b[1]
         }).reverse()
         localStorage.setItem("Highscore", JSON.stringify(array))
+        return true;
+    }
+    get playerName() {
+        if (! localStorage.getItem("PlayerName")) {
+            return undefined;
+        }
+        return localStorage.getItem("PlayerName");
+    }
+    set playerName(name) {
+        console.log(name)
+        if (typeof name !== "string" || name === "") {
+            // add enter name message OR turn box red?
+            return false;
+        }
+        // otherwise save name to storage
+        localStorage.setItem("PlayerName", name);
         return true;
     }
 }

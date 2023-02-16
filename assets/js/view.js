@@ -31,7 +31,7 @@ class Page {
         this._panel4.empty().removeClass().addClass("panel col-lg-6 order-3 order-lg-4 d-none d-lg-block")
     }
     // Display the start screen
-    renderStartScreen() {
+    renderStartScreen(highScore) {
         // clear screen
         this.clearScreen()
         this._favicon.attr({ 'href': './assets/images/logo-open.ico', 'type': "image/x-icon" })
@@ -54,7 +54,11 @@ class Page {
         this._panel4.append(imageDiv4.append(imagePanel4))
 
         // panel 3 - high score board
-        let highscoreDiv = $('<div>').text("highscores go here")
+        let highscoreDiv = $('<div>').text("High-scores")
+        let scoreList = this.renderHighScoreDiv(highScore)
+
+        // Displays the list of highscores which is an array
+        highscoreDiv.append(scoreList)
         this._panel3.append(highscoreDiv);
 
         // Change contents
@@ -115,6 +119,17 @@ class Page {
         // return onbject of items that need adjusting
         return { 'button': button, 'input': input }
     }
+    renderHighScoreDiv(highScore) {
+        let scoreList = $("<ol>")
+        if (highScore.length > 0) {
+            highScore.forEach(element => {
+                scoreList.append($("<li>").text(`${element[0]} - ${element[1]}`))
+            });
+        } else {
+            scoreList.append($("<li>").text(`No Scores Recorded Yet!`))
+        }
+        return scoreList
+    }
     // Make the game over screen
     renderGameOver(highScore) {
         //clear screen
@@ -131,17 +146,18 @@ class Page {
         let picture1Div = $('<div>').text('picture goes here').removeClass('d-none').css({ 'height': '100%', 'background-image': 'url(http://placekitten.com/g/400/200) ,url(http://placekitten.com/g/300/200) ,url(http://placekitten.com/g/200/200)', 'background-repeat': 'repeat-x, repeat' })
         this._panel2.append(picture1Div)
 
-        let highScoreDiv = $('<div>').text('high score goes here')
+        let highScoreDiv = $('<div>').text('High-scores')
 
         // Loops through and shows the array elements
-        let scoreList = $("<ol>")
-        if (highScore.length > 0) {
-        highScore.forEach(element => {
-            scoreList.append($("<li>").text(`${element[0]} - ${element[1]}`))
-        });
-    } else {
-        scoreList.append($("<li>").text(`No Scores Recorded Yet!`))
-    }
+        // let scoreList = $("<ol>")
+        // if (highScore.length > 0) {
+        //     highScore.forEach(element => {
+        //         scoreList.append($("<li>").text(`${element[0]} - ${element[1]}`))
+        //     });
+        // } else {
+        //     scoreList.append($("<li>").text(`No Scores Recorded Yet!`))
+        // }
+        let scoreList = this.renderHighScoreDiv(highScore)
 
         // Displays the list of highscores which is an array
         highScoreDiv.append(scoreList)
@@ -150,7 +166,7 @@ class Page {
         let picture2Div = $('<div>').text('picture goes here').removeClass('d-none')
         this._panel4.append(picture2Div)
 
-        return {"replayButton": replayButton}
+        return { "replayButton": replayButton }
     }
 
 
