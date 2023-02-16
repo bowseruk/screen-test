@@ -19,7 +19,8 @@ class Game {
     // Logic to start the game
     start() {
         this._quiz.start()
-        this._timer = 40 * this._ticks;
+        // Give 5 seconds a question
+        this._timer = this._quiz.length * 5 * this._ticks;
         this._gameState = 1;
         this._score = 0;
     }

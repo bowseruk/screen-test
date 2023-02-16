@@ -144,4 +144,7 @@ class Quiz {
     get hints() {
         return this.activeQuestion.hints;
     }
+    get length() {
+        return this._questions.length;
+    }
 }

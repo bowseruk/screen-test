@@ -11,7 +11,7 @@ class Page {
     }
     // Displays a timer with the seconds inputted
     renderTimer(seconds) {
-        $('#timer-display').text(seconds + "seconds");
+        $('#timer-display').text(seconds + " seconds");
     }
     // Displays a timer with the seconds inputted
     renderScore(score) {
@@ -42,7 +42,7 @@ class Page {
         // panel 1 - create start button
         let buttonDiv = $('<div>').addClass('d-flex justify-content-center align-items-center')
         let button = $('<button>').text('Start')
-        this._panel1.append(buttonDiv.append(button))
+        this._panel1.removeClass('d-none').addClass("double-panel").append(buttonDiv.append(button))
 
         // panel 2 & 3 - images
         let imageDiv2 = $('<div>').css({
@@ -65,7 +65,7 @@ class Page {
 
         // Displays the list of highscores which is an array
         highscoreDiv.append(scoreList)
-        this._panel3.append(highscoreDiv);
+        this._panel3.removeClass('d-none').addClass("double-panel").append(highscoreDiv);
 
         // Change contents
 
@@ -92,15 +92,15 @@ class Page {
             "height": "100%",
             "width": "100%"
         }).addClass('d-flex justify-content-center align-items-center p-5')
-        let curtainVideo1 = $('<video>').attr({"width":"100%", "height":"100%", "src":"assets/sfx/hsl edit 10_VP9.webm" ,"onclick":"play()"})
-        this._panel2.removeClass('d-none').append(hint1Div.append(curtainVideo1, $('<p>').text(hints[0].hint)))
+        let curtainVideo1 = $('<video>').attr({"width":"100%", "height":"100%", "src":"assets/sfx/hsl edit 10_VP9.webm"})
+        this._panel2.removeClass('d-none').append(hint1Div.append(curtainVideo1, $('<p>').text(hints[0].hint).css({"width":"80%"})))
 
         // generate hint 2
         let hint2Div = $('<div>').addClass("hint").css({
             "height": "100%",
             "width": "100%"
         }).addClass('d-flex justify-content-center align-items-center p-3');
-        let curtainVideo2 = $('<video>').attr({"width":"100%", "height":"100%", "src":"assets/sfx/hsl edit 10_VP9.webm" ,"onclick":"play()"})
+        let curtainVideo2 = $('<video>').attr({"width":"100%", "height":"100%", "src":"assets/sfx/hsl edit 10_VP9.webm"})
         this._panel3.removeClass('d-none').append(hint2Div);
 
         // split actor array into separate actors
@@ -132,10 +132,34 @@ class Page {
             "height": "100%",
             "width": "100%"
         }).addClass('d-flex justify-content-center align-items-center p-5')
-        let curtainVideo3 = $('<video>').attr({"width":"100%", "height":"100%", "src":"assets/sfx/hsl edit 10_VP9.webm" ,"onclick":"play()"});
+        let curtainVideo3 = $('<video>').attr({"width":"100%", "height":"100%", "src":"assets/sfx/hsl edit 10_VP9.webm"});
         this._panel4.removeClass('d-none').append(hint3Div.append(curtainVideo3, $('<p>').text(hints[2].hint)))
-
-
+        // Logic to open the curtains
+        let timer = 9;
+        this.videoTimerInterval = setInterval(() => {
+            switch(timer){
+                case 9:
+                    curtainVideo1.get(0).play()
+                    break;
+                case 6:
+                    curtainVideo1.get(0).pause();
+                    curtainVideo1.addClass("hidden-video")
+                    curtainVideo2.get(0).play()
+                    break;
+                case 3:
+                    curtainVideo2.get(0).pause();
+                    curtainVideo2.addClass("d-none");
+                    curtainVideo3.get(0).play()
+                    break;
+                case 0:
+                    curtainVideo3.get(0).pause();
+                    curtainVideo3.addClass("d-none");
+                    clearInterval(this.videoTimerInterval);
+                    break;
+            }
+            timer--;
+            return
+        }, (1000));
         // return onbject of items that need adjusting
         return { 'button': button, 'input': input }
     }
@@ -161,7 +185,7 @@ class Page {
         let gameOverDiv = $('<div>').text('Game Over')
         let replayButton = $('<button>').addClass("btn").text("Play Again?")
         gameOverDiv.append(replayButton);
-        this._panel1.removeClass('d-none').append(gameOverDiv)
+        this._panel1.removeClass('d-none').addClass("double-panel").append(gameOverDiv)
 
         // let picture1Div = $('<div>').text('picture goes here').removeClass('d-none').css({ 'height': '100%', 'background-image': 'url(https://m.media-amazon.com/images/M/MV5BOTk0OWE4NTQtYzNlYS00YTc3LWI1YzQtZGJjZDEyOGE0NTg0XkEyXkFqcGdeQXVyNTIzOTk5ODM@._V1_FMjpg_UY720_.jpg)', 'background-repeat': 'repeat-x, repeat' })
         // this._panel2.append(picture1Div)
@@ -181,24 +205,11 @@ class Page {
         this._panel4.append(imageDiv4.append(imagePanel4))
 
         let highScoreDiv = $('<div>').text('High-scores')
-
-        // Loops through and shows the array elements
-        // let scoreList = $("<ol>")
-        // if (highScore.length > 0) {
-        //     highScore.forEach(element => {
-        //         scoreList.append($("<li>").text(`${element[0]} - ${element[1]}`))
-        //     });
-        // } else {
-        //     scoreList.append($("<li>").text(`No Scores Recorded Yet!`))
-        // }
         let scoreList = this.renderHighScoreDiv(highScore)
 
         // Displays the list of highscores which is an array
         highScoreDiv.append(scoreList)
-        this._panel3.removeClass('d-none').append(highScoreDiv)
-
-        // let picture2Div = $('<div>').text('picture goes here').removeClass('d-none')
-        // this._panel4.append(picture2Div)
+        this._panel3.removeClass('d-none').addClass("double-panel").append(highScoreDiv)
 
         return { "replayButton": replayButton }
     }
