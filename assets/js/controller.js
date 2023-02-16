@@ -124,7 +124,7 @@ class Controller {
             return a[1]-b[1]
         }).reverse()
         // Limit high score to 10
-        if (highScoreArray.length > 10) {
+        if (highScoreArray.length > 5) {
             highScoreArray.pop();
         }
         this.highScore = highScoreArray;
