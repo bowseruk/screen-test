@@ -51,17 +51,14 @@ class MovieQuestion extends Question {
     makeHints() {
         var omdbAPIKey = "5ddc668b";
         var queryURL = "https://www.omdbapi.com/?t=" + this._movie + "&apikey=" + omdbAPIKey;
-        var hintObject = this
- 
-
+        // Assign a variable to this to allow for async function below to work on the object
+        var thisFix = this
         $.ajax({
             url: queryURL,
             method: "GET"
         }).then(function (response) {
-
-           hintObject._hints = [new Hint(response.Plot), new Hint(response.Actors), new Hint(response.Year)];
-           console.log(this._hints,this)
-
+            // Make hints for the question
+           thisFix._hints = [new Hint(response.Plot), new Hint(response.Actors), new Hint(response.Year)];
         });
 
     }
