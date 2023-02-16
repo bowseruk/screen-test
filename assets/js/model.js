@@ -41,9 +41,11 @@ class Game {
         };
         return false;
     };
+    // setters
     set score(score) {
         this._score = score;
     };
+    // getters
     get score() {
         return this._score;
     };

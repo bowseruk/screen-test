@@ -105,9 +105,7 @@ class Page {
 
         // split actor array into separate actors
         let element = hints[1].hint.split(",")[0]
-
         var giphyAPIKey = "TpCd8mDzwDatSRlW5OE4uVl2OfAuTE1F";
-
         var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + element + "&api_key=" + giphyAPIKey;
 
         // call giphy API
@@ -118,10 +116,8 @@ class Page {
 
             // Creating an image tag
             var gifImage = $("<img>");
-
             // Setting the src attribute of the image
             gifImage.attr("src", response.data[0].images.fixed_height.url);
-
             // show hint 2
             hint2Div.append(curtainVideo2,gifImage);
 
@@ -138,22 +134,27 @@ class Page {
         let timer = 9;
         this.videoTimerInterval = setInterval(() => {
             switch(timer){
+                // on nine seconds
                 case 9:
                     curtainVideo1.get(0).play()
                     break;
+                // on 6 seconds
                 case 6:
                     curtainVideo1.get(0).pause();
                     curtainVideo1.addClass("hidden-video")
                     curtainVideo2.get(0).play()
                     break;
+                // on 3 seconds
                 case 3:
                     curtainVideo2.get(0).pause();
                     curtainVideo2.addClass("d-none");
                     curtainVideo3.get(0).play()
                     break;
+                // on 0 seconds
                 case 0:
                     curtainVideo3.get(0).pause();
                     curtainVideo3.addClass("d-none");
+                    // remove timer
                     clearInterval(this.videoTimerInterval);
                     break;
             }
@@ -164,12 +165,16 @@ class Page {
         return { 'button': button, 'input': input }
     }
     renderHighScoreDiv(highScore) {
+        // make a list
         let scoreList = $("<ol>")
+        // check length
         if (highScore.length > 0) {
             highScore.forEach(element => {
+                // This is done for each item in the score
                 scoreList.append($("<li>").text(`${element[0]} - ${element[1]}`))
             });
         } else {
+            // message if no high score yet
             scoreList.append($("<li>").text(`No Scores Recorded Yet!`))
         }
         return scoreList
