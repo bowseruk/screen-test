@@ -31,7 +31,7 @@ Successes:
 * Giphy - https://developers.giphy.com/
 
 ## Preview
-[add image here]
+![project preview](https://github.com/bowseruk/screen-test/blob/main/assets/images/screenshot.png)
 
 ## Deployed Links
 * GitHub Repository: https://bowseruk.github.io/screen-test/
