@@ -133,7 +133,7 @@ class Page {
             "width": "100%"
         }).addClass('d-flex justify-content-center align-items-center p-5')
         let curtainVideo3 = $('<video>').attr({"width":"100%", "height":"100%", "src":"assets/sfx/hsl edit 10_VP9.webm"});
-        this._panel4.removeClass('d-none').append(hint3Div.append(curtainVideo3, $('<p>').text(hints[2].hint)))
+        this._panel4.removeClass('d-none').append(hint3Div.append(curtainVideo3, $('<p>').text("Year of Release: "), $('<p>').text(hints[2].hint)))
         // Logic to open the curtains
         let timer = 9;
         this.videoTimerInterval = setInterval(() => {
