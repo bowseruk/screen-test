@@ -19,6 +19,7 @@ class Page {
     }
     // Clear the four game panels
     clearScreen() {
+        clearInterval(this.videoTimerInterval);
         $('#timer-display').text(null);
         $('#total-score').text(null);
         // clear panel 1
