@@ -19,11 +19,12 @@ header footer {
     width: 35px;
     background-size: cover;
     transition: background-image 500ms linear;
+    border-radius: 50%;
+    background-color: white;
 }
 
 .brand-logo {
     background-image: url('../images/Screen\ Time\ Logo\ Opened\ Shadow.png');
-
 }
 
 .brand-logo:hover {
@@ -60,6 +61,7 @@ header footer {
 
 .panel img {
     padding: 0;
+    height: 75%;
 }
 
 @media screen and (max-width: 450px) {

@@ -45,12 +45,18 @@ class Page {
         this._panel1.append(buttonDiv.append(button))
 
         // panel 2 & 3 - images
-        let imageDiv2 = $('<div>')
-        let imagePanel2 = $('<img>').attr('src', "http://placekitten.com/g/400/200")
+        let imageDiv2 = $('<div>').css({
+            "height": "100%",
+            "width": "100%"
+        }).addClass('d-flex justify-content-center align-items-center')
+        let imagePanel2 = $('<img>').attr('src', "https://m.media-amazon.com/images/M/MV5BOTk0OWE4NTQtYzNlYS00YTc3LWI1YzQtZGJjZDEyOGE0NTg0XkEyXkFqcGdeQXVyNTIzOTk5ODM@._V1_FMjpg_UY720_.jpg")
         this._panel2.append(imageDiv2.append(imagePanel2))
 
-        let imageDiv4 = $('<div>')
-        let imagePanel4 = $('<img>').attr('src', "http://placekitten.com/g/400/200")
+        let imageDiv4 = $('<div>').css({
+            "height": "100%",
+            "width": "100%"
+        }).addClass('d-flex justify-content-center align-items-center')
+        let imagePanel4 = $('<img>').attr('src', "https://m.media-amazon.com/images/M/MV5BNzlhYjEzOGItN2MwNS00ODRiLWE5OTItYThiNmJlMTdmMzgxXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_QL75_UX280_CR0,10,280,414_.jpg")
         this._panel4.append(imageDiv4.append(imagePanel4))
 
         // panel 3 - high score board
@@ -74,7 +80,7 @@ class Page {
         this._logo.removeClass('brand-logo-closed').addClass('brand-logo')
 
         // show question in panel 1
-        let questionDiv = $('<div>')
+        let questionDiv = $('<div>').addClass("p-5")
         let questionP = $('<p>').text(`${question}`)
         let input = $('<input>')
         let button = $('<button>').attr({ type: 'submit' }).text('Submit')
@@ -82,11 +88,17 @@ class Page {
         this._panel1.append(questionDiv.append(questionP, input, button))
 
         // show hint 1
-        let hint1Div = $('<div>').text(hints[0].hint)
+        let hint1Div = $('<div>').text(hints[0].hint).css({
+            "height": "100%",
+            "width": "100%"
+        }).addClass('d-flex justify-content-center align-items-center p-5')
         this._panel2.removeClass('d-none').append(hint1Div)
 
         // generate hint 2
-        let hint2Div = $('<div>');
+        let hint2Div = $('<div>').css({
+            "height": "100%",
+            "width": "100%"
+        }).addClass('d-flex justify-content-center align-items-center p-3');
         this._panel3.removeClass('d-none').append(hint2Div);
 
         // split actor array into separate actors
@@ -112,8 +124,12 @@ class Page {
             hint2Div.append(gifImage);
 
         });
+
         // show hint 3
-        let hint3Div = $('<div>').text(hints[2].hint)
+        let hint3Div = $('<div>').text(hints[2].hint).css({
+            "height": "100%",
+            "width": "100%"
+        }).addClass('d-flex justify-content-center align-items-center p-5')
         this._panel4.removeClass('d-none').append(hint3Div)
 
         // return onbject of items that need adjusting
@@ -143,8 +159,22 @@ class Page {
         gameOverDiv.append(replayButton);
         this._panel1.removeClass('d-none').append(gameOverDiv)
 
-        let picture1Div = $('<div>').text('picture goes here').removeClass('d-none').css({ 'height': '100%', 'background-image': 'url(http://placekitten.com/g/400/200) ,url(http://placekitten.com/g/300/200) ,url(http://placekitten.com/g/200/200)', 'background-repeat': 'repeat-x, repeat' })
-        this._panel2.append(picture1Div)
+        // let picture1Div = $('<div>').text('picture goes here').removeClass('d-none').css({ 'height': '100%', 'background-image': 'url(https://m.media-amazon.com/images/M/MV5BOTk0OWE4NTQtYzNlYS00YTc3LWI1YzQtZGJjZDEyOGE0NTg0XkEyXkFqcGdeQXVyNTIzOTk5ODM@._V1_FMjpg_UY720_.jpg)', 'background-repeat': 'repeat-x, repeat' })
+        // this._panel2.append(picture1Div)
+
+        let imageDiv2 = $('<div>').css({
+            "height": "100%",
+            "width": "100%"
+        }).addClass('d-flex justify-content-center align-items-center')
+        let imagePanel2 = $('<img>').attr('src', "https://m.media-amazon.com/images/M/MV5BOTk0OWE4NTQtYzNlYS00YTc3LWI1YzQtZGJjZDEyOGE0NTg0XkEyXkFqcGdeQXVyNTIzOTk5ODM@._V1_FMjpg_UY720_.jpg")
+        this._panel2.append(imageDiv2.append(imagePanel2))
+
+        let imageDiv4 = $('<div>').css({
+            "height": "100%",
+            "width": "100%"
+        }).addClass('d-flex justify-content-center align-items-center')
+        let imagePanel4 = $('<img>').attr('src', "https://m.media-amazon.com/images/M/MV5BNzlhYjEzOGItN2MwNS00ODRiLWE5OTItYThiNmJlMTdmMzgxXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_QL75_UX280_CR0,10,280,414_.jpg")
+        this._panel4.append(imageDiv4.append(imagePanel4))
 
         let highScoreDiv = $('<div>').text('High-scores')
 
@@ -163,8 +193,8 @@ class Page {
         highScoreDiv.append(scoreList)
         this._panel3.removeClass('d-none').append(highScoreDiv)
 
-        let picture2Div = $('<div>').text('picture goes here').removeClass('d-none')
-        this._panel4.append(picture2Div)
+        // let picture2Div = $('<div>').text('picture goes here').removeClass('d-none')
+        // this._panel4.append(picture2Div)
 
         return { "replayButton": replayButton }
     }
