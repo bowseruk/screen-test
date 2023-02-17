@@ -3,13 +3,11 @@ class Hint {
     constructor(hinttext) {
         this._hint = hinttext;
     }
-
+    // get the hint
     get hint() {
         return this._hint;
     }
 }
-
-
 
 // This class describes a question in the game
 class Question {
@@ -26,6 +24,7 @@ class Question {
         // A bad guess
         return false;
     }
+    // Get functions
     get question() {
         return this._question;
     }
@@ -38,15 +37,11 @@ var hint = [];
 
 class MovieQuestion extends Question {
     constructor(movie) {
-        // Get movie information from API
-
-        
-
         // Calls the constructor for a Question
         super("Guess the Movie?", movie, [undefined,undefined,undefined]);
         this._movie = movie;
+        // Have to call this due to errors when calling api in constructor
         this.makeHints()
-
     }
     makeHints() {
         var omdbAPIKey = "5ddc668b";
@@ -83,19 +78,16 @@ class Quiz {
     // Shuffle the order of questions
     shuffle(array) {
         let currentIndex = array.length, randomIndex;
-
         // While there remain elements to shuffle.
         while (currentIndex != 0) {
-
             // Pick a remaining element.
             randomIndex = Math.floor(Math.random() * currentIndex);
             currentIndex--;
-
             // And swap it with the current element.
             [array[currentIndex], array[randomIndex]] = [
                 array[randomIndex], array[currentIndex]];
         }
-
+        // return shuffled array
         return array;
     }
     shuffleQuestions() {
@@ -132,6 +124,7 @@ class Quiz {
         this._activeQuestion = 0;
         this._ended = false;
     }
+    // get functions
     get activeQuestion() {
         return this._questions[this._currentQuestion];
     }
@@ -143,5 +136,8 @@ class Quiz {
     }
     get hints() {
         return this.activeQuestion.hints;
+    }
+    get length() {
+        return this._questions.length;
     }
 }

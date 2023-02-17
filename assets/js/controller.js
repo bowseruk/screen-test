@@ -47,7 +47,7 @@ class Controller {
                 // Stops execution of action at set interval
                 clearInterval(this.timerInterval);
                 this.addToHighScore(localStorage.getItem("PlayerName"), this._model.score);
-                let { replayButton } = this._view.renderGameOver(this.highScore)
+                let { replayButton } = this._view.renderGameOver(this.highScore, this._model.timer)
                 replayButton.on("click", (event => {
                     event.preventDefault();
                     this.init()
