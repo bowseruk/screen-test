@@ -62,38 +62,25 @@ body {
     width: 100%;
     display: block;
 }
-
+/* Make the plot box scrollable when it overflows */
 .plot-box {
-    width: 70%;
     overflow: scroll;
 }
-
+/* This is important with the curtain overlay */
 video {
-    /* content: ''; */
     position: absolute;
-    /* background: rgba(0, 0, 0, 0.5); */
-    /* border-radius: 5px; */
-    /* top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0; */
     z-index: 10;
     width: 50vw;
     height: calc(50vh - ((40px + 60px)/2));
     object-fit: fill;
     transition: visibility 0s, opacity 0.5s linear;
 }
-
-.hidden-video {
-    display: none;
-    opacity: 0;
-}
-
+/* Make the gif the right size */
 .panel img {
     padding: 0;
     height: 75%;
 }
-
+/* Tweaks for smaller screens */
 @media screen and (max-width: 450px) {
     #navbar-title {
         display: none;
@@ -103,8 +90,8 @@ video {
         width: 100%;
     }
 }
-
-@media screen and (max-width: 992px) {
+/*  Tweaks for mobile */
+@media screen and (max-width: 991px) {
 .panel {
     height: calc(25vh - ((40px + 60px)/4));
 }

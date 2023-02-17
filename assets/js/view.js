@@ -146,7 +146,7 @@ class Page {
                 // on 6 seconds
                 case 6:
                     curtainVideo1.get(0).pause();
-                    curtainVideo1.addClass("hidden-video")
+                    curtainVideo1.addClass("d-none")
                     curtainVideo2.get(0).play()
                     break;
                 // on 3 seconds
