@@ -89,6 +89,9 @@ class Controller {
 
     }
     init() {
+        if (this.playerName) {
+            $("#player-name").val(this.playerName)
+        }
         // Let you press enter on the modal input
         $("#player-name").on("keydown", (event) => {
             // If the user presses the "Enter" key on the keyboard
@@ -118,6 +121,7 @@ class Controller {
             return false;
         }
         $("#settingsModal").modal("toggle");
+        $("#player-name").val(this.playerName)
         return true;
     }
     // This function adds a new value to high score
