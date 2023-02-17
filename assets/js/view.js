@@ -42,7 +42,7 @@ class Page {
 
         // panel 1 - create start button
         let buttonDiv = $('<div>').addClass('d-flex justify-content-center align-items-center')
-        let button = $('<button>').text('Start')
+        let button = $('<button>').text('Start').addClass("btn btn-outline-light")
         this._panel1.removeClass('d-none').addClass("double-panel").append(buttonDiv.append(button))
 
         // panel 2 & 3 - images
@@ -81,12 +81,16 @@ class Page {
         this._logo.removeClass('brand-logo-closed').addClass('brand-logo')
 
         // show question in panel 1
-        let questionDiv = $('<div>').addClass("p-5")
+        let questionDiv = $('<div>').addClass("p-5 input-group mb-3")
+        let inputGroupDiv = $('<div>').addClass("input-group mb-3")
         let questionP = $('<p>').text(`${question}`)
-        let input = $('<input>')
-        let button = $('<button>').attr({ type: 'submit' }).text('Submit')
+        // Make a bootstrap inline input with floating label
+        let floatDiv = $('<div>').addClass("form-floating")
+        let input = $('<input>').attr({"id":"input-guess", "type":"text", "placeholder": "Movie", "aria-label":"Movie Guess", "required":true}).addClass("form-control")
+        let label = $('<label>').attr({"for":"input-guess"}).text("Movie")
+        let button = $('<button>').attr({ "type": 'submit', "id":"button-guess" }).addClass("btn btn-outline-light").text('Guess')
 
-        this._panel1.append(questionDiv.append(questionP, input, button))
+        this._panel1.append(questionDiv.append(questionP, inputGroupDiv.append(floatDiv.append(input,label), button)))
 
         // show hint 1
         let hint1Div = $('<div>').addClass("hint").css({
@@ -130,7 +134,7 @@ class Page {
             "width": "100%"
         }).addClass('d-flex justify-content-center align-items-center p-5')
         let curtainVideo3 = $('<video>').attr({"width":"100%", "height":"100%", "src":"assets/sfx/hsl edit 10_VP9.webm"});
-        this._panel4.removeClass('d-none').append(hint3Div.append(curtainVideo3, $('<p>').text("Year of Release: "), $('<p>').text(hints[2].hint)))
+        this._panel4.removeClass('d-none').append(hint3Div.append(curtainVideo3, $('<div>').append($('<p>').text("Year of Release: "), $('<p>').text(hints[2].hint))))
         // Logic to open the curtains
         let timer = 9;
         this.videoTimerInterval = setInterval(() => {
@@ -181,17 +185,17 @@ class Page {
         return scoreList
     }
     // Make the game over screen
-    renderGameOver(highScore) {
+    renderGameOver(highScore, timer) {
         //clear screen
-        this.clearScreen()
-        this._timer.addClass('d-none')
-        this._favicon.attr({ 'href': './assets/images/logo-closed.ico', 'type': "image/x-icon" })
-        this._logo.removeClass('brand-logo').addClass('brand-logo-closed')
+        this.clearScreen();
+        this._timer.addClass('d-none');
+        this._favicon.attr({ 'href': './assets/images/logo-closed.ico', 'type': "image/x-icon" });
+        this._logo.removeClass('brand-logo').addClass('brand-logo-closed');
 
-        let gameOverDiv = $('<div>').text('Game Over')
-        let replayButton = $('<button>').addClass("btn").text("Play Again?")
-        gameOverDiv.append(replayButton);
-        this._panel1.removeClass('d-none').addClass("double-panel").append(gameOverDiv)
+        let gameOverDiv = $('<div>');
+        let replayButton = $('<button>').addClass("btn btn-outline-light").text("Play Again?");
+        gameOverDiv.append($('<p>').text((timer > 0) ? "Congratulations" : "Game Over"),replayButton);
+        this._panel1.removeClass('d-none').addClass("double-panel").append(gameOverDiv);
 
         // let picture1Div = $('<div>').text('picture goes here').removeClass('d-none').css({ 'height': '100%', 'background-image': 'url(https://m.media-amazon.com/images/M/MV5BOTk0OWE4NTQtYzNlYS00YTc3LWI1YzQtZGJjZDEyOGE0NTg0XkEyXkFqcGdeQXVyNTIzOTk5ODM@._V1_FMjpg_UY720_.jpg)', 'background-repeat': 'repeat-x, repeat' })
         // this._panel2.append(picture1Div)
@@ -199,16 +203,16 @@ class Page {
         let imageDiv2 = $('<div>').css({
             "height": "100%",
             "width": "100%"
-        }).addClass('d-flex justify-content-center align-items-center')
-        let imagePanel2 = $('<img>').attr('src', "https://m.media-amazon.com/images/M/MV5BOTk0OWE4NTQtYzNlYS00YTc3LWI1YzQtZGJjZDEyOGE0NTg0XkEyXkFqcGdeQXVyNTIzOTk5ODM@._V1_FMjpg_UY720_.jpg")
-        this._panel2.append(imageDiv2.append(imagePanel2))
+        }).addClass('d-flex justify-content-center align-items-center');
+        let imagePanel2 = $('<img>').attr('src', "https://m.media-amazon.com/images/M/MV5BOTk0OWE4NTQtYzNlYS00YTc3LWI1YzQtZGJjZDEyOGE0NTg0XkEyXkFqcGdeQXVyNTIzOTk5ODM@._V1_FMjpg_UY720_.jpg");
+        this._panel2.append(imageDiv2.append(imagePanel2));
 
         let imageDiv4 = $('<div>').css({
             "height": "100%",
             "width": "100%"
-        }).addClass('d-flex justify-content-center align-items-center')
-        let imagePanel4 = $('<img>').attr('src', "https://m.media-amazon.com/images/M/MV5BNzlhYjEzOGItN2MwNS00ODRiLWE5OTItYThiNmJlMTdmMzgxXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_QL75_UX280_CR0,10,280,414_.jpg")
-        this._panel4.append(imageDiv4.append(imagePanel4))
+        }).addClass('d-flex justify-content-center align-items-center');
+        let imagePanel4 = $('<img>').attr('src', "https://m.media-amazon.com/images/M/MV5BNzlhYjEzOGItN2MwNS00ODRiLWE5OTItYThiNmJlMTdmMzgxXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_QL75_UX280_CR0,10,280,414_.jpg");
+        this._panel4.append(imageDiv4.append(imagePanel4));
 
         let highScoreDiv = $('<div>').text('High-scores')
         let scoreList = this.renderHighScoreDiv(highScore)
