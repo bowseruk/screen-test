@@ -66,6 +66,9 @@ body {
 .plot-box {
     overflow: scroll;
 }
+.plot-box::-webkit-scrollbar {
+    display: none;
+}
 /* This is important with the curtain overlay */
 video {
     position: absolute;
