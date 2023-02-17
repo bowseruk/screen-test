@@ -82,7 +82,7 @@ class Page {
 
         // show question in panel 1
         let questionDiv = $('<div>').addClass("p-5 input-group mb-3")
-        let inputGroupDiv = $('<div>').addClass("input-group mb-3")
+        let inputGroupDiv = $('<div>').addClass("input-group has-validation mb-3")
         let questionP = $('<p>').text(`${question}`)
         // Make a bootstrap inline input with floating label
         let floatDiv = $('<div>').addClass("form-floating")

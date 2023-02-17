@@ -12,7 +12,7 @@ class Controller {
         if (!localStorage.getItem("PlayerName")) {
 
             //open modal
-            $("#exampleModal").modal("show")
+            $("#settingsModal").modal("show")
             return;
         }
 
@@ -27,13 +27,13 @@ class Controller {
                 // Cancel the default action, if needed
                 event.preventDefault();
                 // Trigger the button element with a click
-                this.guess(input.val())
+                this.guess(input.val(),input)
             }
         });
         button.on("click", (event) => {
             // Cancel the default action, if needed
             event.preventDefault();
-            this.guess(input.val())
+            this.guess(input.val(),input)
         })
     }
     startTimer() {
@@ -62,7 +62,7 @@ class Controller {
             // The number below here is how many millisecons to run this function            
         }, (Math.floor(1000 / this._model.ticks)));
     }
-    guess(guess) {
+    guess(guess, previousInput) {
         // get choice
         // feed choice to model
         if (this._model.guess(guess)) {
@@ -75,14 +75,18 @@ class Controller {
                     // Cancel the default action, if needed
                     event.preventDefault();
                     // Trigger the button element with a click
-                    this.guess(input.val());
+                    this.guess(input.val(), input);
                 }
             });
             button.on("click", (event) => {
                 event.preventDefault();
-                this.guess(input.val());
+                this.guess(input.val(),input);
             });
+            return true;
         }
+        previousInput.addClass("is-invalid")
+        return false;
+
     }
     init() {
         if (this.playerName) {
@@ -116,7 +120,7 @@ class Controller {
         if (this.playerName === undefined) {
             return false;
         }
-        $("#exampleModal").modal("toggle");
+        $("#settingsModal").modal("toggle");
         $("#player-name").val(this.playerName)
         return true;
     }
