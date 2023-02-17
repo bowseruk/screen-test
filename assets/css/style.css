@@ -63,13 +63,10 @@ body {
     display: block;
 }
 
-/* .hint video {
-    position: relative;
-    width: 500px;
-    margin: 0 auto;
-    padding: 20px;
-
-} */
+.plot-box {
+    width: 70%;
+    overflow: scroll;
+}
 
 video {
     /* content: ''; */
@@ -100,6 +97,10 @@ video {
 @media screen and (max-width: 450px) {
     #navbar-title {
         display: none;
+    }
+
+    .plot-box {
+        width: 100%;
     }
 }
 

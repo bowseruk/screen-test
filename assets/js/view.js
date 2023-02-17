@@ -98,7 +98,7 @@ class Page {
             "width": "100%"
         }).addClass('d-flex justify-content-center align-items-center p-5')
         let curtainVideo1 = $('<video>').attr({"width":"100%", "height":"100%", "src":"assets/sfx/hsl edit 10_VP9.webm"})
-        this._panel2.removeClass('d-none').append(hint1Div.append(curtainVideo1, $('<p>').text(hints[0].hint).css({"width":"80%"})))
+        this._panel2.removeClass('d-none').append(hint1Div.append(curtainVideo1, $('<p>').text(hints[0].hint)).addClass("plot-box"))
 
         // generate hint 2
         let hint2Div = $('<div>').addClass("hint").css({
